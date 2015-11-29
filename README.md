@@ -76,7 +76,7 @@ You can build two versions of the library:
 * The default with global libraries (`React`,`THREE`, and `ReactTHREE`) exposed,
   for easy inclusion using a `<script>` tag.
 * The `commonjs` version which is basically a commonjs module that you can `require` from.
-  
+
 Checkout the git repository. You will need node and npm.
 
 ```
@@ -155,6 +155,8 @@ Then open the example index in your browser at `http://localhost:8080/`
 
 Testing
 =======
+
+The test runner requires Firefox to be installed. You can get Firefox from http://firefox.com.
 
 Some tests require WebGL and cannot be run on the CI test server. Because of
 this, it is recommended that you run the tests locally before submitting a pull request.
