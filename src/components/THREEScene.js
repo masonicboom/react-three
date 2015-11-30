@@ -136,6 +136,11 @@ var THREEScene = React.createClass({
           this._effect.setSize(props.width, props.height)
         }
 
+        if (props.VRControls !== undefined) {
+          this._VRControls = new props.VRControls(camera);
+          this._VRControls.update();
+        }
+
         this._THREEcamera = camera;
 
         this.mountOrbitControls(props);
@@ -256,10 +261,14 @@ var THREEScene = React.createClass({
     },
 
     renderScene() {
+        if (this._VRControls !== undefined) {
+            this._VRControls.update();
+        }
+
         if (this._effect !== undefined) {
-          this._effect.render(this._THREEObject3D, this._THREEcamera);
+            this._effect.render(this._THREEObject3D, this._THREEcamera);
         } else {
-          this._THREErenderer.render(this._THREEObject3D, this._THREEcamera);
+            this._THREErenderer.render(this._THREEObject3D, this._THREEcamera);
         }
     },
 
