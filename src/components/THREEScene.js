@@ -137,8 +137,15 @@ var THREEScene = React.createClass({
         }
 
         if (props.VRControls !== undefined) {
-          // TODO: make it possible for the controls to orbit a specified object, rather than control the camera.
-          this._VRControls = new props.VRControls(camera);
+          let target;
+          if (typeof props.VRControlsTarget === 'string') {
+            // Make controls rotate a specified object, rather than the camera.
+            target = this._THREEObject3D.getObjectByName(props.VRControlsTarget, true);
+          } else {
+            // Controls rotate the camera.
+            target = camera;
+          }
+          this._VRControls = new props.VRControls(target);
           this._VRControls.update();
         }
 
